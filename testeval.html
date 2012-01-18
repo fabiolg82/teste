@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>jQuery validation plug-in - comment form example</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js" type="text/javascript"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#commentForm").validate({
+		onfocusout: function(element) {
+	        $('#cemail').valid();
+	    },
+	     rules: {
+     
+      cemail: {
+        required: true,
+        email: true
+      },
+    },
+    messages: {
+     
+      cemail: "Please enter a valid email address"
+    }
+    });
+
+	$("#cemail").focusout(function(){
+		$('#commentForm').submit();
+		
+	});
+});
+
+</script>
+
+<style type="text/css">
+#commentForm { width: 500px; }
+#commentForm label { width: 250px; }
+#commentForm label.error, #commentForm input.submit { margin-left: 253px; }
+</style>
+
+</head>
+<body>
+
+<form class="cmxform" id="commentForm" method="get" action="">
+	<fieldset>
+		<legend>Please provide your name, email address (won't be published) and a comment</legend>
+		
+		<p>
+			<label for="cemail">E-Mail (required)</label>
+			<input id="cemail" name="email" class="required email" />
+		</p>
+		
+	</fieldset>
+</form>
+
+</body>
+</html>
